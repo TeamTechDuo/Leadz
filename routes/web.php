@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('countries', 'CountryController');
 
 Auth::routes();
 
