@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::resource('countries', 'CountryController');
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
