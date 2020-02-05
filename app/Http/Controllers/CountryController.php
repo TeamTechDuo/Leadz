@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use Illuminate\Http\Request;
+Use Alert;
 
 class CountryController extends Controller
 {
     public function index()
     {
+        Alert::toast('Toast Message', 'Toast Type');
         return view('country.index');
     }
 
