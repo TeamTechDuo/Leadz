@@ -17,7 +17,11 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-Route::resource('countries', 'CountryController');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('countries', 'CountryController')->except(['show','create']);
+});
+
+
 
 Auth::routes();
 
