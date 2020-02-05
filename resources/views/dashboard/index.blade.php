@@ -25,11 +25,17 @@
 </head>
 
 <body id="page-top">
-
-    <div class="wrapper">
-        @yield('content')
+    @include('dashboard.partials.sidebar')
+    <div id="content">
+    @include('dashboard.partials.nav')
+        <div id="content-wrapper">
+            <div class="wrapper">
+                @yield('content')
+            </div>
+            @include('dashboard.partials.footer')
+        </div>
+    <!-- /.content-wrapper -->
     </div>
-
     
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded-pill" href="#page-top">
