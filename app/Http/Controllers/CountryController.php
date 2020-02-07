@@ -5,26 +5,32 @@ namespace App\Http\Controllers;
 use App\Country;
 use Illuminate\Http\Request;
 Use Alert;
+use App\User;
 
 class CountryController extends Controller
 {
     public function index()
     {
-        Alert::toast('Toast Message', 'Toast Type');
         return view('country.index');
     }
 
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+
+        if (isset($request->validator) && $request->validator->fails()) {
+            return back()->with('error', $validator->messages()->all()[0])->withInput();
+        }
+
+        $country = new Country([
+            'name' => $request->get('name'),
+        ]);
+        $country->save();
+        return redirect('/countries')->withSuccess('Country name successfully created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Country  $country
-     * @return \Illuminate\Http\Response
-     */
     public function show(Country $country)
     {
         //

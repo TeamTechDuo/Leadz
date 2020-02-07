@@ -10,18 +10,21 @@
     <!-- Breadcrumbs-->
         @include('country.partials.breadcrumbs')
 
-    <div class="row">
-    <div class="col-md-4">
-        <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" type="text" placeholder="Enter Country Name">
-        </div>
-    </div>
-    <div class="col-md-2">
-        <label>&nbsp</label>
-        <button type="button" class="btn btn-outline-primary w-100">Upload</button>
-    </div>
-</div>
+        <form action="{{route('countries.store')}}" method="POST"> 
+            @csrf
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" type="text" name="name" placeholder="Enter Country Name" value="{{old('name')}}" required>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label>&nbsp</label>
+                    <button type="submit" class="btn btn-outline-primary w-100">Submit</button>
+                </div>
+            </div>
+        </form>
 
     <!-- DataTables Example -->
     
