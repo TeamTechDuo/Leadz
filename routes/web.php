@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('countries', 'CountryController')->except(['show','create']);
+    Route::resource('country', 'CountryController')->except(['show','create']);
 });
 
 

@@ -1,3 +1,4 @@
+<?php $i = 1; ?>
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
@@ -20,14 +21,20 @@
                 </tr>
                 </tfoot>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Montyly Macro Update January</td>
-                    <td>
-                    <button type="button" class="btn btn-outline-primary">Edit</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    </td>
-                </tr>
+                    @foreach ($countries as $country)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{$country->name}}</td>
+                            <td>
+                                <a href="{{ route('country.edit', $country->id)}}" class="btn btn-outline-primary">Edit</a>
+                                <form action="{{ route('country.destroy', $country->id)}}" onclick="return confirm('Are you sure, you want to delete this country?')" method="post" style="display: inline;">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

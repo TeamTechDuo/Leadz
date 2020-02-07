@@ -10,13 +10,14 @@
     <!-- Breadcrumbs-->
         @include('country.partials.breadcrumbs')
 
-        <form action="{{route('country.store')}}" method="POST"> 
+        <form action="{{route('country.update', $country->id)}}" method="POST"> 
             @csrf
+            @method('patch')
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Name</label>
-                        <input class="form-control" type="text" name="name" placeholder="Enter Country Name" value="{{old('name')}}" required>
+                        <input class="form-control" type="text" name="name" placeholder="Enter Country Name" value="{{$country->name}}" required>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -25,11 +26,5 @@
                 </div>
             </div>
         </form>
-
-    <!-- DataTables Example -->
-    
-<!-- /.container-fluid -->
-@include('country.partials.datatable')
-<!-- Sticky Footer -->
 
 @endsection

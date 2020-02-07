@@ -11,7 +11,8 @@ class CountryController extends Controller
 {
     public function index()
     {
-        return view('country.index');
+        $countries = Country::all();
+        return view('country.index', compact('countries'));
     }
 
     public function store(Request $request)
@@ -28,45 +29,31 @@ class CountryController extends Controller
             'name' => $request->get('name'),
         ]);
         $country->save();
-        return redirect('/countries')->withSuccess('Country name successfully created');
+        return redirect('/country')->withSuccess('Country name successfully created');
     }
 
-    public function show(Country $country)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Country  $country
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Country $country)
     {
-        //
+        $country = Country::find($country->id);
+        return view('country.edit', compact('country'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Country  $country
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Country $country)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $country = Country::find($country->id);
+        $country->name = $request->get('name');
+        $country->save();
+        return redirect('/country');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Country  $country
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Country $country)
     {
-        //
+        $country = Country::find($country->id);
+        $country->delete();
+        return redirect('/country');
     }
 }
