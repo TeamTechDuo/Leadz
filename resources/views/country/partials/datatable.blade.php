@@ -21,7 +21,7 @@
                 </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($countries as $country)
+                    {{-- @foreach ($countries as $country)
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{$country->name}}</td>
@@ -34,7 +34,7 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>

@@ -1,6 +1,6 @@
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h4>Data Resource BD</h4>
+        <h4>Leadz</h4>
     </div>
 
     <ul class="list-unstyled components">
