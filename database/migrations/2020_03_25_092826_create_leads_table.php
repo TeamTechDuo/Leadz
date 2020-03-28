@@ -15,6 +15,18 @@ class CreateLeadsTable extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('country_id')->nullable();
+            $table->bigInteger('company_type_id')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('spokesperson')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('designation')->nullable();
+            $table->boolean('is_spokesperson_available')->nullable();
+            $table->string('website')->nullable();
+            $table->string('note')->nullable();
+            $table->boolean('is_client')->nullable();
             $table->timestamps();
         });
     }
